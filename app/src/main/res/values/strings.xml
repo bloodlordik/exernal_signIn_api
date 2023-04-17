@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Exernal SignIn api</string>
+    <string name="vk_client_secret">PrStvFVI5msheES8SZ51</string>
 </resources>

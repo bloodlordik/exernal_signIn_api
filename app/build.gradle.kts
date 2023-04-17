@@ -5,17 +5,28 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("D:\\Src\\AndroidStudioProjects\\ExernalSignInapi\\vk_key.jks")
+            keyAlias = "key0"
+            storePassword = "1c4krprts"
+            keyPassword = "1c4krprts"
+        }
+
+    }
     namespace = "ru.kirshov.exernalsigninapi"
     compileSdk = 33
 
     defaultConfig {
         applicationId = "ru.kirshov.exernalsigninapi"
-        minSdk = 24
+        minSdk = 27
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
     }
 
     buildTypes {
@@ -26,7 +37,7 @@ android {
         }
         debug {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+
         }
     }
     buildFeatures{
@@ -42,6 +53,9 @@ android {
     }
 }
 
+android.defaultConfig.manifestPlaceholders["VkExternalAuthRedirectScheme"] = "vk" + "51617139"
+android.defaultConfig.manifestPlaceholders["VkExternalAuthRedirectHost"] = "vk.com"
+
 dependencies {
 
     implementation("androidx.core:core-ktx:1.10.0")
@@ -51,4 +65,9 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    //VK SDK
+    val sdkVersion = 0.103-24411
+    implementation("com.vk:oauth-vk:0.103-24411")
+    implementation("com.vk:vksdk-pub:0.103-24411")
 }
