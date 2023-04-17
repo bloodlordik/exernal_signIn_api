@@ -5,6 +5,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("D:\\Src\\AndroidStudioProjects\\ExernalSignInapi\\vk_key.jks")
+            keyAlias = "key0"
+            storePassword = "1c4krprts"
+            keyPassword = "1c4krprts"
+        }
+    }
     namespace = "ru.kirshov.exernalsigninapi"
     compileSdk = 33
 
@@ -26,7 +34,7 @@ android {
         }
         debug {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+
         }
     }
     buildFeatures{
